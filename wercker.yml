@@ -1,0 +1,18 @@
+box: wercker/nodejs
+# Build definition
+build:
+    # The steps that will be executed on build
+    steps:
+        # A step that executes `npm install` command
+        - bundle-install
+        - script:
+            name: Generate site.
+            code: bundle exec jekyll build --trace
+
+deploy:
+    steps:
+        - hijonathan/gh-pages:
+            token: $GIT_TOKEN
+            branch: $DEPLOY_BRANCH
+            srcdir: _site
+            domain: useronboarding.org
