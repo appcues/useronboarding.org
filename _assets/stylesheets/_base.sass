@@ -1,0 +1,120 @@
+@import constants
+@import compass/css3/border-radius
+@import compass/css3/box-shadow
+@import compass/css3/box-sizing
+@import compass/css3/transition
+
+
+html, body
+    height: 100%
+
+body
+    font-family: $sans-serif
+    font-size: 18px // testing 18px, originally 14px
+    font-family: $sans-serif
+    color: $text
+    -webkit-font-smoothing: antialiased
+    text-rendering: optimizelegibility
+    font-size: 17px
+
+.is-visible
+    .site-nav
+        top: 100px
+    .top-nav
+        opacity: 1
+        -webkit-transform: translate3d(0px, 0px, 0px)
+        transition: 0.3s all ease
+        top: -200px
+
+h1, h2, h3, h4, h5
+    color: #263c4c
+    font-weight: 600
+
+h1, h2
+    font-family: $sans-serif
+
+h3
+    line-height: 1.4
+    color: $gray-dark
+    margin-bottom: 30px
+
+a
+    color: $brand-color
+    text-decoration: none
+    transition: all 0.2s ease
+    &:hover
+        color: darken($brand-color, 50%)
+        text-decoration: none
+
+section
+    padding: 20px 0
+
+.vertical-middle
+    &.media
+        .media-object, .media-body
+            display: inline-block
+            text-align: left
+
+        .media-object
+            margin-right: 10px
+
+    > *
+        vertical-align: middle
+
+
+.btn
+    color: #fff
+    background-color: #54b89d
+    font-size: 1em
+    padding: 0.6em 1.2em
+    display: inline-block
+    position: relative
+    border: 0
+    text-align: center
+    text-decoration: none
+    font-style: normal
+    font-weight: 200
+    cursor: pointer
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    vertical-align: bottom
+    text-rendering: optimizeLegibility
+    border-radius: 2px
+    vertical-align: middle
+    font-family: $sans-serif
+    border-radius: 2px
+    background: #4dab7d
+    border: 2px solid #4dab7d
+    text-transform: uppercase
+    white-space: nowrap
+    &:hover
+        background: darken(#4dab7d, 10%)
+        border-color: darken(#4dab7d, 10%)
+        color: #fff
+    &:active
+        box-shadow: none
+
+.btn-outline
+    background: none
+    border-radius: 4px
+    font-size: 0.8em
+    border: 2px solid $brand-color
+    border-radius: 3px
+    color: darken($brand-color, 5%)
+    transition: none
+    &:hover
+        border: 2px solid darken($brand-color, 5%)
+        color: darken($brand-color, 10%)
+        background: none
+
+// // Make the footer stick to the bottom of the page.
+// // http://ryanfait.com/resources/footer-stick-to-bottom-of-page/
+// $footerHeight: 182px
+// .site-footer, .push
+//     height: $footerHeight
+
+// .site-wrapper
+//     min-height: 100%
+//     height: auto !important
+//     height: 100%
+//     margin: 0 auto ($footerHeight * -1)
+//     +box-sizing(border-box)

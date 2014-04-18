@@ -1,0 +1,28 @@
+{% capture form_class %}{% if include.form_class %}{{ include.form_class }}{% else %}hs-form-minimal{% endif %}{% endcapture %}
+
+<div class='hubspot-toggle-form'>
+    <div class='form-content'>
+        <script charset="utf-8" src="//js.hsforms.net/forms/current.js"></script>
+        <script>
+          hbspt.forms.create({
+            portalId: '305687',
+            formId: 'c4fb7356-389a-4011-942c-475721d2a7c0',
+            css: '',
+            formData: {
+                cssClass: '{{ form_class }}'
+            },
+            submitButtonClass: 'btn btn-primary',
+            redirectUrl: window.location.href,
+            onFormReady: function($form, context) {
+                if (context.urlParams && context.urlParams.submissionGuid) {
+                    $('.hubspot-toggle-form').addClass('converted');
+                }
+            },
+            formInstanceId: +new Date + ''
+          });
+        </script>
+    </div>
+    <div class='converted-content'>
+        <p class='text-content'><strong>You're already signed up.</strong> Look for the next issue in your inbox.</p>
+    </div>
+</div>

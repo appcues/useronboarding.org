@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>{% if page.title %}{{ page.title }} &mdash; {{ site.title }}{% else %}{{ site.title }} &mdash; {{ site.subtitle }}{% endif %}</title>
+    {% if site.google_font %}<link href="https://fonts.googleapis.com/css?family={{ site.google_font }}" rel="stylesheet" type="text/css">{% endif %}
+    {% stylesheet style %}
+    {% stylesheet font-awesome %}
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/images/{{ site.logo }}"/>
+    <link href="{{ site_url }}/feed.xml" rel="alternate" type="application/rss+xml" title="{{ site.title }}" />
+    <meta name="title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.title }}{% endif %}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    {% if page.site.gplus %}<link rel="publisher" href="https://plus.google.com/{{ site.gplus }}">{% endif %}
+    {% if page.author.gplus %}<link rel="author" href="https://plus.google.com/{{ page.author.gplus }}">{% endif %}
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.title }}{% endif %}"/>
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+    {% if page.cover_image %}
+    <meta property="og:image" content="{{ site.url }}/images/{{ page.cover_image }}"/>
+    {% if page.main_image %}
+    <meta property="og:image" content="{{ site.url }}/images/{{ page.main_image }}"/>
+    {% endif %}
+    <meta property="og:image" content="{{ site.url }}/images/{{ site.logo }}"/>
+    {% endif %}
+    {% if page.description %}
+        <meta property="og:description" content="{{ page.description }}"/>
+        <meta name="description" content="{{ page.description }}"/>
+    {% else if page.excerpt %}
+        <meta property="og:description" content="{{ page.excerpt|strip_html }}"/>
+        <meta name="description" content="{{ page.excerpt|strip_html }}"/>
+    {% endif %}
+    <meta property="og:site_name" content="{{ site.title }}">
+
+    {% include head_scripts.html %}
+</head>
+<body>
+    {{content}}
+
+    {% include footer_scripts.html %}
+
+</body>
+</html>

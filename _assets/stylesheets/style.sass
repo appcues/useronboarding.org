@@ -1,0 +1,43 @@
+@import compass/css3/box-shadow
+@import compass/css3/box-sizing
+@import compass/css3/border-radius
+@import compass/css3/user-interface
+@import compass/css3/background-size
+@import compass/css3/transform
+@import compass/css3/filter
+@import compass/utilities/general/clearfix
+@import bootstrap
+
+@import base
+
+body
+    color: $text
+
+section.post
+    $post-padding: 80px
+    padding: $post-padding 0
+    border-top: 1px solid #eee
+
+    .media-object
+        margin-right: $post-padding/2
+
+    .post-icon
+        font-size: 8em
+
+    .post-title
+        color: $brand-color
+        font-size: 3.5rem
+        line-height: 1.2
+        margin-bottom: 10px
+
+    .post-arrow
+        font-size: 2rem
+        line-height: 3.5rem
+        vertical-align: middle
+
+section.masthead
+    h1
+        font-size: 5rem
+    h2
+        font-size: 2.2rem
+        margin-top: 0

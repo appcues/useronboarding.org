@@ -1,0 +1,47 @@
+---
+layout: wrapped
+is_blog: true
+---
+
+{% include navbar.html %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-xs-12">
+            <div class="blog-sidebar panel panel-light">
+                <div class="panel-body">
+                    <h4 class="sidebar-header">Free class by email</h4>
+                    <p>Get new lessons delivered to you.</p>
+
+                    {% include signup_form.html %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <div class='post post-full'>
+                <div class="post-header">
+                    <h1 class="post-title">{{ page.title }}</h1>
+                </div>
+                {{ content }}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52fbabc359d294b4"></script>
+<script type="text/javascript">
+  if (addthis != null) {
+      addthis.layers({
+          'theme' : 'transparent',
+          'share' : {
+              'position' : 'left',
+              'numPreferredServices' : 6,
+              'services' : 'twitter,linkedin,facebook,google_plusone_share,print'
+          }
+      });
+  }
+</script>
+<!-- AddThis Smart Layers END -->
