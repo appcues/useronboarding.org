@@ -15,4 +15,4 @@ deploy:
             token: $GIT_TOKEN
             branch: $DEPLOY_BRANCH
             srcdir: _site
-            domain: useronboarding.org
+            domain: goodux.co
