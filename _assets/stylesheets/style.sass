@@ -44,21 +44,25 @@ section.masthead
         font-size: 2.2rem
         margin-top: 0
 
-#side-scroll-container
+.side-scroll-container
     width: auto
     white-space: nowrap
     height: 100%
 
-    > .scroll-item-wrapper
-        white-space: normal
-        vertical-align: top
-        float: none
-        display: inline-block
-        height: 100%
+    @media screen and (max-width: $screen-xs-max)
+        padding: 0
+
+.scroll-item-wrapper
+    white-space: normal
+    vertical-align: top
+    float: none
+    display: inline-block
+    height: 100%
+    padding: 0
 
 .scroll-item
     height: 100%
     padding: 20% 0
 
     @media screen and (max-width: $screen-xs-max)
-        padding: 20px 0
+        padding: 10px
