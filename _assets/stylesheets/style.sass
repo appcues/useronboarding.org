@@ -14,12 +14,14 @@ body
     color: $text
 
 section.post
-    $post-padding: 80px
-    padding: $post-padding 0
-    border-top: 1px solid #eee
+    padding: 20px
+    height: 100%
+    border: 1px solid #eee
+    +border-radius(3px)
 
-    .media-object
-        margin-right: $post-padding/2
+    header
+        border-bottom: 1px solid #eee
+        padding-bottom: 10px
 
     .post-icon
         font-size: 8em
@@ -41,3 +43,22 @@ section.masthead
     h2
         font-size: 2.2rem
         margin-top: 0
+
+#side-scroll-container
+    width: auto
+    white-space: nowrap
+    height: 100%
+
+    > .scroll-item-wrapper
+        white-space: normal
+        vertical-align: top
+        float: none
+        display: inline-block
+        height: 100%
+
+.scroll-item
+    height: 100%
+    padding: 20% 0
+
+    @media screen and (max-width: $screen-xs-max)
+        padding: 20px 0

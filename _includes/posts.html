@@ -1,28 +1,26 @@
 {% assign draft_divider_inserted=false %}
 {% for post in site.posts reversed %}
-<div class="container">
-    <section class="post {% if post.is_draft %}post-draft{% endif %}">
-        <div class="media">
-            <div class="media-object pull-left hidden-xs">
+<div class="col-md-4 col-sm-6 col-xs-12 scroll-item-wrapper">
+    <div class="scroll-item">
+        <section class="post {% if post.is_draft %}post-draft{% endif %}">
+            <header class="text-center">
                 <i class="post-icon fa fa-2x fa-fw {{ post.icon }}"></i>
-            </div>
-            <div class="media-body">
-                <h3 class="post-title">
-                    {{ post.title }}
-                    <i class="post-arrow fa fa-chevron-right"></i>
-                </h3>
-                <p class="post-excerpt">
-                    {% if post.description %}
-                        {{ post.description }}
-                    {% else %}
-                        {{ post.excerpt|strip_html }}
-                    {% endif %}
-                </p>
-                {% unless post.is_draft %}
-                    <div><a class="post-url" href="{{ post.url }}"></a></div>
-                {% endunless %}
-            </div>
-        </div>
-    </section>
+            </header>
+            <h3 class="post-title">
+                {{ post.title }}
+                <i class="post-arrow fa fa-chevron-right"></i>
+            </h3>
+            <p class="post-excerpt">
+                {% if post.description %}
+                    {{ post.description }}
+                {% else %}
+                    {{ post.excerpt|strip_html }}
+                {% endif %}
+            </p>
+            {% unless post.is_draft %}
+                <div><a class="post-url" href="{{ post.url }}"></a></div>
+            {% endunless %}
+        </section>
+    </div>
 </div>
 {% endfor %}
