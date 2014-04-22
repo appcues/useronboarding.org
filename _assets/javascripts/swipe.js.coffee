@@ -45,9 +45,9 @@ checkAndTransition = (e) ->
     if Math.abs(@x) < windowWidth/2  # Still mostly in view.
         resetCard.call @
     else if @x < 0  # Navigate right.
-        transitionRight @
+        transitionRight.call @
     else if @x > 0  # Navigate left.
-        transitionLeft @
+        transitionLeft.call @
 
 resetCard = ->
     @style.webkitTransition = '-webkit-transform 0.2s ease-in-out'
@@ -57,25 +57,27 @@ resetCard = ->
         return
     , 200
 
-transitionRight = (currentCard) ->
-    nextCard = $(currentCard).next('.scroll-item-wrapper').get 0
+transitionRight = (e) ->
+    $currentCard = $ @
+    nextCard = $currentCard.next('.scroll-item-wrapper').get 0
     unless nextCard?
-        resetCard.call currentCard
+        resetCard.call @
         return
 
-    transitionOut.call currentCard, 'left'
-    $(currentCard).one 'animationend webkitTransitionEnd', ->
-        $(currentCard).hide()
+    transitionOut.call @, 'left'
+    $currentCard.one 'animationend webkitTransitionEnd', ->
+        $currentCard.hide()
         transitionIn.call nextCard
 
-transitionLeft = (currentCard) ->
-    prevCard = $(currentCard).prev('.scroll-item-wrapper').get 0
+transitionLeft = (e) ->
+    $currentCard = $ @
+    prevCard = $currentCard.prev('.scroll-item-wrapper').get 0
     unless prevCard?
-        resetCard.call currentCard
+        resetCard.call @
         return
-    transitionOut.call currentCard, 'right'
-    $(currentCard).one 'animationend webkitTransitionEnd', ->
-        $(currentCard).hide()
+    transitionOut.call @, 'right'
+    $currentCard.one 'animationend webkitTransitionEnd', ->
+        $currentCard.hide()
         transitionIn.call prevCard
 
 transitionOut = (endPos='left') ->
