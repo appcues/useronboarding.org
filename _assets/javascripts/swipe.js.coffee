@@ -32,24 +32,8 @@ $ ->
     $cards.each (i, el) ->
         Hammer(el).on 'drag', dragEl
         Hammer(el).on 'dragend', checkAndTransition
-
-    # # Navigate forward.
-    # swipeLeft = Hammer(containerEl).on 'swipeleft', (event) ->
-    #     if currentCardIndex < cardsCount0
-    #         prevCardIndex = currentCardIndex
-    #         currentCardIndex++
-    #         navigateCards $cards[prevCardIndex], $cards[currentCardIndex]
-    #     else
-    #         currentCardIndex = cardsCount0
-
-    # # Navigate backward.
-    # swipeRight = Hammer(containerEl).on 'swiperight', (event) ->
-    #     if currentCardIndex > 0
-    #         prevCardIndex = currentCardIndex
-    #         currentCardIndex--
-    #         navigateCards $cards[prevCardIndex], $cards[currentCardIndex]
-    #     else
-    #         currentCardIndex = 0
+        Hammer(containerEl).on 'swipeleft', transitionLeft
+        Hammer(containerEl).on 'swiperight', transitionRight
 
 windowWidth = window.innerWidth
 
@@ -61,17 +45,9 @@ checkAndTransition = (e) ->
     if Math.abs(@x) < windowWidth/2  # Still mostly in view.
         resetCard.call @
     else if @x < 0  # Navigate right.
-        nextCard = $(@).next('.scroll-item-wrapper').get(0)
-        if nextCard?
-            transitionRight @, nextCard
-        else
-            resetCard.call @
+        transitionRight @
     else if @x > 0  # Navigate left.
-        prevCard = $(@).prev('.scroll-item-wrapper').get(0)
-        if prevCard?
-            transitionLeft @, prevCard
-        else
-            resetCard.call @
+        transitionLeft @
 
 resetCard = ->
     @style.webkitTransition = '-webkit-transform 0.2s ease-in-out'
@@ -81,17 +57,26 @@ resetCard = ->
         return
     , 200
 
-transitionRight = (from, to) ->
-    transitionOut.call from, 'left'
-    $(from).one 'animationend webkitTransitionEnd', ->
-        $(from).hide()
-        transitionIn.call to
+transitionRight = (currentCard) ->
+    nextCard = $(currentCard).next('.scroll-item-wrapper').get 0
+    unless nextCard?
+        resetCard.call currentCard
+        return
 
-transitionLeft = (from, to) ->
-    transitionOut.call from, 'right'
-    $(from).one 'animationend webkitTransitionEnd', ->
-        $(from).hide()
-        transitionIn.call to
+    transitionOut.call currentCard, 'left'
+    $(currentCard).one 'animationend webkitTransitionEnd', ->
+        $(currentCard).hide()
+        transitionIn.call nextCard
+
+transitionLeft = (currentCard) ->
+    prevCard = $(currentCard).prev('.scroll-item-wrapper').get 0
+    unless prevCard?
+        resetCard.call currentCard
+        return
+    transitionOut.call currentCard, 'right'
+    $(currentCard).one 'animationend webkitTransitionEnd', ->
+        $(currentCard).hide()
+        transitionIn.call prevCard
 
 transitionOut = (endPos='left') ->
     if endPos is 'left'
