@@ -18,8 +18,8 @@ $ ->
     $cards.each (i, el) ->
         Hammer(el).on 'drag', dragEl
         Hammer(el).on 'dragend', checkAndTransition
-        Hammer(el).on 'swipeleft', transitionLeft
-        Hammer(el).on 'swiperight', transitionRight
+        # Hammer(el).on 'swipeleft', transitionLeft
+        # Hammer(el).on 'swiperight', transitionRight
 
 
 disableElasticScrolling = ->
