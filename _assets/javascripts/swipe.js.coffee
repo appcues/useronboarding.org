@@ -1,48 +1,32 @@
 #= require hammer
-#= require within-viewport
-
-# We can do some cool stuff here on mobile to make this super addictive to read.
-# Make a Jelly-like UI where people swipe to navigate among cards. This would
-# require managing each card on a stack with push/pop to navigate between views.
+windowWidth = window.innerWidth
 
 $ ->
+    # Redefine windowWidth.
+    windowWidth = window.innerWidth
+    return unless windowWidth <= 480
+
     $container = $ '#side-scroll-container'
-    containerEl = $container.get 0
     $cards = $container.find '.scroll-item-wrapper'
 
-    # Hide all cards elements.
+    # Hide all cards elements except for the first one.
     $cards.hide()
-
-    # Find which card to focus on.
-    currentCardIndex = 0
-    cardsCount = $cards.length
-    cardsCount0 = $cards.length - 1
-    for card, i in $cards
-        $card = $ card
-        halfCardWidth = $card.width() / 2
-        majorityInView = withinViewport(card, {left: halfCardWidth}) or withinViewport(card, {right: halfCardWidth})
-        if majorityInView
-            currentCardIndex = i
-            $card.show()
-            break
-
-    # Show the current card.
-    # $cards[currentCardIndex].show
+        .first()
+        .show()
 
     $cards.each (i, el) ->
         Hammer(el).on 'drag', dragEl
         Hammer(el).on 'dragend', checkAndTransition
-        Hammer(containerEl).on 'swipeleft', transitionLeft
-        Hammer(containerEl).on 'swiperight', transitionRight
-
-windowWidth = window.innerWidth
+        Hammer(el).on 'swipeleft', transitionLeft
+        Hammer(el).on 'swiperight', transitionRight
 
 dragEl = (e) ->
-    @x = e.gesture.deltaX * 0.4
+    @x = e.gesture.deltaX * 1.2
     @style.webkitTransform = "translate3d(#{@x}px, 0, 0)"
 
+# Transition if less than 2/3 of card is still shown.
 checkAndTransition = (e) ->
-    if Math.abs(@x) < windowWidth/2  # Still mostly in view.
+    if Math.abs(@x) < windowWidth/3  # Still mostly in view.
         resetCard.call @
     else if @x < 0  # Navigate right.
         transitionRight.call @
