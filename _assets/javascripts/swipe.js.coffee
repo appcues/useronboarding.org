@@ -42,29 +42,24 @@ resetCard = ->
     , 200
 
 transitionRight = (e) ->
-    $currentCard = $ @
-    nextCard = $currentCard.next('.scroll-item-wrapper').get 0
+    nextCard = $(@).next('.scroll-item-wrapper').get 0
     unless nextCard?
         resetCard.call @
         return
 
-    transitionOut.call @, 'left'
-    $currentCard.one 'animationend webkitTransitionEnd', ->
-        $currentCard.hide()
+    transitionOut.call @, 'left', ->
         transitionIn.call nextCard
 
 transitionLeft = (e) ->
-    $currentCard = $ @
-    prevCard = $currentCard.prev('.scroll-item-wrapper').get 0
+    prevCard = $(@).prev('.scroll-item-wrapper').get 0
     unless prevCard?
         resetCard.call @
         return
-    transitionOut.call @, 'right'
-    $currentCard.one 'animationend webkitTransitionEnd', ->
-        $currentCard.hide()
+
+    transitionOut.call @, 'right', ->
         transitionIn.call prevCard
 
-transitionOut = (endPos='left') ->
+transitionOut = (endPos='left', callback) ->
     if endPos is 'left'
         endPosX = windowWidth * -1.5
     else if endPos is 'right'
@@ -76,10 +71,15 @@ transitionOut = (endPos='left') ->
     duration = 0.2
     @style.webkitTransition = "-webkit-transform #{duration}s ease-in-out"
     @style.webkitTransform = "translate3d(#{endPosX}px, 0, 0)"
+    setTimeout =>
+        $(@).hide()
+        @style.webkitTransform = 'translate3d(0, 0, 0)'
+        callback()
+    , duration * 1000
 
 transitionIn = ->
     # Center.
-    @style.webkitTransform = "translate3d(0, 0, 0)"
+    @style.webkitTransform = 'translate3d(0, 0, 0)'
 
     $el = $ @
     $el.one('animationend webkitAnimationEnd', ->
