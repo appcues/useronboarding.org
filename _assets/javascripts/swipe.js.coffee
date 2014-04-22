@@ -6,6 +6,7 @@ $ ->
     windowWidth = window.innerWidth
     return unless windowWidth <= 480
 
+    disableElasticScrolling()
     $container = $ '#side-scroll-container'
     $cards = $container.find '.scroll-item-wrapper'
 
@@ -19,6 +20,25 @@ $ ->
         Hammer(el).on 'dragend', checkAndTransition
         # Hammer(el).on 'swipeleft', transitionLeft
         # Hammer(el).on 'swiperight', transitionRight
+disableElasticScrolling = ->
+    document.addEventListener 'touchstart', (event) ->
+        @allowUp = (@scrollTop > 0)
+        @allowDown = (@scrollTop < @scrollHeight - @clientHeight)
+        @prevTop = null
+        @prevBot = null
+        @lastY = event.pageY
+        return
+
+    document.addEventListener 'touchmove', (event) ->
+        up = (event.pageY > @lastY)
+        down = not up
+        @lastY = event.pageY
+        if (up and @allowUp) or (down and @allowDown)
+            event.stopPropagation()
+        else
+            event.preventDefault()
+        return
+
 
 dragEl = (e) ->
     @x = e.gesture.deltaX * 1.2
