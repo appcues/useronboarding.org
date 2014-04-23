@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+        <title>User Onboarding</title>
+        <description>User Onboarding - User Onboarding</description>
+        <link>http://useronboarding.org</link>
+        <link>http://useronboarding.org</link>
+        <lastBuildDate>2014-04-23T15:32:35+00:00</lastBuildDate>
+        <pubDate>2014-04-23T15:32:35+00:00</pubDate>
+        <ttl>1800</ttl>
+
+
+        <item>
+                <title>Job Change Risk</title>
+                <description>&lt;p&gt;When your customer changes jobs, your contract is in jeopardy.&lt;/p&gt;</description>
+                <link>http://useronboarding.org/academy/job</link>
+                <guid>http://useronboarding.org/academy/job</guid>
+                <pubDate>2014-03-04T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>One Night Stands</title>
+                <description></description>
+                <link>http://useronboarding.org/academy/seconds</link>
+                <guid>http://useronboarding.org/academy/seconds</guid>
+                <pubDate>2014-02-05T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>Less than 1%</title>
+                <description>&lt;p&gt;That means 99 in 100 leads won’t actually become customers. Great companies like Twitter (0.69%), Facebook (0.89%) and LinkedIn (2.27%) aren’t immune either.&lt;/p&gt;
+&lt;!--more--&gt;</description>
+                <link>http://useronboarding.org/academy/cro</link>
+                <guid>http://useronboarding.org/academy/cro</guid>
+                <pubDate>2014-02-01T00:00:00+00:00</pubDate>
+        </item>
+
+
+</channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>User Onboarding</title>
+ <link href="http://useronboarding.org/" rel="self"/>
+ <link href="http://useronboarding.org"/>
+ <updated>2014-04-23T15:32:35+00:00</updated>
+ <id>http://useronboarding.org</id>
+ <author>
+   <name>User Onboarding</name>
+   <email>team@useronboarding.org</email>
+ </author>
+
+ 
+ <entry>
+   <title>Job Change Risk</title>
+   <link href="http://useronboarding.org/academy/job"/>
+   <updated>2014-03-04T00:00:00+00:00</updated>
+   <id>http://useronboarding.org/academy/job</id>
+   <content type="html">&lt;p&gt;When your customer changes jobs, your contract is in jeopardy.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>One Night Stands</title>
+   <link href="http://useronboarding.org/academy/seconds"/>
+   <updated>2014-02-05T00:00:00+00:00</updated>
+   <id>http://useronboarding.org/academy/seconds</id>
+   <content type="html"></content>
+ </entry>
+ 
+ <entry>
+   <title>Less than 1%</title>
+   <link href="http://useronboarding.org/academy/cro"/>
+   <updated>2014-02-01T00:00:00+00:00</updated>
+   <id>http://useronboarding.org/academy/cro</id>
+   <content type="html">&lt;p&gt;That means 99 in 100 leads won’t actually become customers. Great companies like Twitter (0.69%), Facebook (0.89%) and LinkedIn (2.27%) aren’t immune either.&lt;/p&gt;
+&lt;!--more--&gt;</content>
+ </entry>
+ 
+ 
+</feed>

@@ -1,0 +1,10 @@
+
+http://useronboarding.org/index.html
+http://useronboarding.org/rss.xml
+http://useronboarding.org/sitemap.txt
+http://useronboarding.org/atom.xml
+http://useronboarding.org/404.html
+
+http://useronboarding.org/academy/job
+http://useronboarding.org/academy/seconds
+http://useronboarding.org/academy/cro
