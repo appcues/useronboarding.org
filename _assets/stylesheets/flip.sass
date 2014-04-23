@@ -1,0 +1,31 @@
+@import compass/css3/transform
+@import compass/css3/transition
+
+.flip-container
+    -webkit-perspective: 1000
+
+    &.flip .flipper
+        +transform(rotateY(-180deg))
+
+.flipper
+    +transition(0.6s)
+    +transform-style(preserve-3d)
+    position: relative
+
+.flip-front, .flip-back
+    -webkit-backface-visibility: hidden
+    position: absolute
+    top: 10px
+    right: 10px
+    bottom: 10px
+    left: 10px
+
+    &.card
+        padding: 20px
+        height: auto !important
+
+.flip-front
+    z-index: 2
+
+.flip-back
+    +transform(rotateY(180deg))

@@ -17,8 +17,7 @@ $ ->
     $cards.each (i, el) ->
         Hammer(el).on 'drag', dragEl
         Hammer(el).on 'dragend', checkAndTransition
-        # Hammer(el).on 'swipeleft', transitionLeft
-        # Hammer(el).on 'swiperight', transitionRight
+        Hammer(el).on 'doubletap', flip
 
 dragEl = (e) ->
     e.gesture.preventDefault()
@@ -73,7 +72,7 @@ transitionOut = (endPos='left', callback) ->
     @style.webkitTransition = "-webkit-transform #{duration}s ease-in-out"
     @style.webkitTransform = "translate3d(#{endPosX}px, 0, 0)"
     setTimeout =>
-        $(@).hide()
+        $(@).removeClass('flip').hide()
         @style.webkitTransform = 'translate3d(0, 0, 0)'
         callback()
     , duration * 1000
@@ -88,3 +87,6 @@ transitionIn = ->
     )
     .addClass('animated pop-in')
     .show()
+
+flip = (e) ->
+    $(@).toggleClass 'flip'

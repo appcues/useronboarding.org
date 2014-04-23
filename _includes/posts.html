@@ -1,8 +1,8 @@
 {% assign draft_divider_inserted=false %}
 {% for post in site.posts reversed %}
-<div class="col-md-4 col-sm-6 col-xs-12 scroll-item-wrapper">
-    <div class="scroll-item">
-        <section class="post {% if post.is_draft %}post-draft{% endif %}">
+<div class="col-md-4 col-sm-6 col-xs-12 scroll-item-wrapper flip-container">
+    <div class="scroll-item flipper">
+        <section class="post {% if post.is_draft %}post-draft{% endif %} flip-front card">
             <header class="text-center">
                 <i class="post-icon fa fa-2x fa-fw {{ post.icon }}"></i>
             </header>
@@ -20,6 +20,14 @@
             {% unless post.is_draft %}
                 <div><a class="post-url" href="{{ post.url }}"></a></div>
             {% endunless %}
+        </section>
+        <section class="flip-back card">
+            <h3 class="post-title">
+                {{ post.title }}
+            </h3>
+
+            {{ post.content }}
+
         </section>
     </div>
 </div>

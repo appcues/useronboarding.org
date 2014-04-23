@@ -10,6 +10,7 @@
 
 @import base
 @import mixins
+@import flip
 
 
 body
@@ -18,7 +19,6 @@ body
 section.post
     padding: 20px
     height: 100%
-    border: 1px solid #eee
     +border-radius(3px)
 
     header
@@ -92,3 +92,6 @@ section.masthead
 .pop-in
     -webkit-animation-name: pop-in
     animation-name: pop-in
+
+.card
+    border: 1px solid #eee
